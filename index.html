@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Solutions Inc.</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        /* Header Styles */
+        header {
+            background: #2c3e50;
+            color: white;
+            padding: 1rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #3498db;
+        }
+
+        /* Main Content Styles */
+        .page {
+            padding: 100px 20px 60px;
+            min-height: 100vh;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Home Page */
+        .hero {
+            text-align: center;
+            padding: 4rem 0;
+        }
+
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            background: #f9f9f9;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Testimonials Page */
+        .testimonials {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .testimonial-card {
+            background: #f9f9f9;
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-left: 4px solid #3498db;
+        }
+
+        /* Contact Page */
+        .contact-form {
+            max-width: 600px;
+            margin: 2rem auto;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-top: 0.5rem;
+        }
+
+        button {
+            background: #3498db;
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background: #2980b9;
+        }
+
+        /* About Page */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: center;
+            margin-top: 2rem;
+        }
+
+        /* Footer Styles */
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: auto;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Tech Solutions</div>
+            <div class="nav-links">
+                <a href="#home" onclick="showPage('home')">Home</a>
+                <a href="#testimony" onclick="showPage('testimony')">Our Testimony</a>
+                <a href="#contact" onclick="showPage('contact')">Contact Us</a>
+                <a href="#about" onclick="showPage('about')">About Us</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Home Page -->
+    <div id="home" class="page">
+        <div class="hero">
+            <h1>Your Technology Partner</h1>
+            <p>Comprehensive IT solutions for your business success</p>
+            <button onclick="showPage('contact')">Get Started</button>
+        </div>
+
+        <div class="services">
+            <div class="service-card">
+                <h3>IT Support</h3>
+                <p>24/7 technical support and infrastructure management</p>
+            </div>
+            <div class="service-card">
+                <h3>Software Development</h3>
+                <p>Custom software solutions for your business needs</p>
+            </div>
+            <div class="service-card">
+                <h3>Digital Marketing</h3>
+                <p>Boost your online presence and generate leads</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Testimony Page -->
+    <div id="testimony" class="page" style="display: none;">
+        <h2>Client Testimonials</h2>
+        <div class="testimonials">
+            <div class="testimonial-card">
+                <p>"Excellent service and quick response times!"</p>
+                <h4>- ABC Company</h4>
+            </div>
+            <div class="testimonial-card">
+                <p>"Transformed our digital presence completely."</p>
+                <h4>- XYZ Corporation</h4>
+            </div>
+            <div class="testimonial-card">
+                <p>"Reliable IT partner for our growing business."</p>
+                <h4>- Tech Innovators</h4>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Page -->
+    <div id="contact" class="page" style="display: none;">
+        <h2>Contact Us</h2>
+        <form class="contact-form" onsubmit="handleSubmit(event)">
+            <div class="form-group">
+                <label>Name:</label>
+                <input type="text" required>
+            </div>
+            <div class="form-group">
+                <label>Email:</label>
+                <input type="email" required>
+            </div>
+            <div class="form-group">
+                <label>Message:</label>
+                <textarea rows="5" required></textarea>
+            </div>
+            <button type="submit">Send Message</button>
+        </form>
+    </div>
+
+    <!-- About Page -->
+    <div id="about" class="page" style="display: none;">
+        <h2>About Us</h2>
+        <div class="about-content">
+            <div>
+                <h3>Who We Are</h3>
+                <p>We are a full-service technology company specializing in IT support, software development, and digital marketing solutions. With over a decade of experience, we help businesses achieve their technology goals.</p>
+            </div>
+            <div>
+                <h3>Our Team</h3>
+                <p>Our team consists of certified professionals in various technology disciplines, committed to delivering exceptional results for our clients.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2023 Tech Solutions Inc. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function showPage(pageId) {
+            // Hide all pages
+            document.querySelectorAll('.page').forEach(page => {
+                page.style.display = 'none';
+            });
+            
+            // Show selected page
+            document.getElementById(pageId).style.display = 'block';
+            
+            // Update active link
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.style.color = link.getAttribute('href') === `#${pageId}` ? '#3498db' : 'white';
+            });
+        }
+
+        function handleSubmit(event) {
+            event.preventDefault();
+            alert('Thank you for your message! We will contact you soon.');
+            event.target.reset();
+            showPage('home');
+        }
+
+        // Show home page by default
+        window.onload = () => showPage('home');
+    </script>
+</body>
+</html>
